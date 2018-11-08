@@ -3,13 +3,14 @@ from .mapping import map_spreadsheet_data
 
 def test_tab_separated_unicode_text_returns_as_tuple(self):
     input_sample = (
-        "This\ttext\t\is\ttab\tseparated"
-        "\nAnd\tline\tseparated\tas\twell"
+        "r1c1\tr1c2\tr1c3\tr1c4"
+        "\nr2c1\tr2c2\tr2c3\tr2c4"
     )
-    assert False
     # Test that the first line is ignored
     result = map_spreadsheet_data(input_sample)
+
     assert type(result) == namedtuple
+    assert result == expected_result
 
 
 def test_empty_string_does_not_return_data_if_map_is_provided(self):
